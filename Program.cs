@@ -8,18 +8,18 @@ namespace MovieLibrary
     {
         static void Main(string[] args)
         {
-            Movie movie = new Movie();
-            Menu menu = new Menu();
-            File file = new File();
+            var menu = new Menu();
+            do
+            {
+                var userSelection = menu.MenuSelection();    
 
-            file.addFile("movies.csv");
-            Menu.display();
+            } while(menu.isValid);
 
-            do{
-            var choice = menu.GetInput();
             
 
-             } while(choice == "1"|| choice == "2");
+
+
+            
         }
     }
 }
