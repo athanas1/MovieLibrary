@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using MovieLibrary.Data;
-using MovieLibrary.Models;
 using ConsoleTables;
+
 
 namespace MovieLibrary {
 
     internal class Menu {
         
+        private FileManager manager;
 
         public bool isValid { get; set; }
         public Menu(){
@@ -44,15 +45,28 @@ namespace MovieLibrary {
         }
 
         public void Choice(string userResponse){
-
-            if(userResponse == "1"){
-                System.Console.WriteLine();
-                ConsoleTable.From<Movie>(FileManager.GetAll());
-            } else if(userResponse == "2"){
-                
-            } else{
-                System.Console.WriteLine("Thank you for using Magnificient Movie Library");
+            //Tried if
+           
+            switch (userResponse)
+            {
+                case "1":
+                    // List movies
+                    manager = new FileManager();
+                    System.Console.WriteLine();
+                    manager.listMovies();
+                    break;
+                case "2":
+                    // Ask user to enter movie details
+                    manager = new FileManager();
+                    Console.WriteLine();
+                    manager.addMovie();
+                    break;
+                default:
+                    //default will close app
+                    System.Console.WriteLine("Thank you for using Magnificent Movie Service");  
+                    break;  
             }
+
             /////////     tried putting the isvalid in choice, too many issues with this
             // if (selection == "1"){
             //     System.Console.WriteLine("here are the list of all our movies");
