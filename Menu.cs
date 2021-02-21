@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using MovieLibrary.Data;
+using MovieLibrary.Models;
+using ConsoleTables;
 
 namespace MovieLibrary {
 
@@ -20,7 +23,7 @@ namespace MovieLibrary {
 
         public string MenuSelection(){
             System.Console.WriteLine("Select the following options");
-            System.Console.WriteLine("1) List all movies");
+            System.Console.WriteLine("1) List of our movies");
             System.Console.WriteLine("2) Add a movie to our list");
             System.Console.WriteLine("Any other key will leave the system");
             
@@ -28,20 +31,31 @@ namespace MovieLibrary {
 
             if(response == "1"){
                 isValid = true;
+                
             } else if (response == "2") {
                 isValid = true;
+                
             } else{
                 isValid = false;
-                break;
+                
             }
-            
+
             return response;
         }
 
-        public void Choice(){
+        public void Choice(string userResponse){
+
+            if(userResponse == "1"){
+                System.Console.WriteLine();
+                ConsoleTable.From<Movie>(FileManager.GetAll());
+            } else if(userResponse == "2"){
+                
+            } else{
+                System.Console.WriteLine("Thank you for using Magnificient Movie Library");
+            }
+            /////////     tried putting the isvalid in choice, too many issues with this
             // if (selection == "1"){
             //     System.Console.WriteLine("here are the list of all our movies");
-            //     tried putting the valid in choice, too many issues with this
             //     valid = true;
             // } else if(selection == "2"){
             //     System.Console.WriteLine("here you can add movies to our list");

@@ -11,13 +11,11 @@ namespace MovieLibrary
             var menu = new Menu();
             do
             {
-                var userSelection = menu.MenuSelection();    
+                var userSelection = menu.MenuSelection();  
+
+                menu.Choice(userSelection);
 
             } while(menu.isValid);
-
-            
-
-
 
             
         }
