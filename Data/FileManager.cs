@@ -14,16 +14,47 @@ namespace MovieLibrary.Data
 
         public void listMovies(){
             if(File.Exists(file)){
+                int counter = 0;
+                string answer = "";
+                int x = 0;
                 //Reading data from file
                 StreamReader sr = new StreamReader(file);
                 while(!sr.EndOfStream)
                 {
+                    bool valid = true;
                     string line = sr.ReadLine();
                     //converting each string to an array with split with a ,
                     string[] arr = line.Split(',');
                     //output the array?
-                    string str = String.Join(",", arr);
+                    string str = String.Join("  ", arr);
                     Console.WriteLine(str);
+                    counter++;
+
+                    if(counter == 10){
+                        System.Console.WriteLine("\n Would you like to go to the next page?   (Y/N)");
+                        answer = Console.ReadLine().ToUpper();
+                        if(answer == "Y") {
+                            counter = 0;
+                        } else {
+                            break;
+                        }
+                    }
+                        
+                    // if(valid)
+                    // {
+                    //     int x = 0;
+                        
+                    //     System.Console.WriteLine("List next page?  (Y/N)");
+                    //     answer = Console.ReadLine().ToUpper();
+                    //     if(answer == "Y"){
+                    //         valid = true;
+                    //     } else{
+                    //         valid = false;
+                    //     }
+                    //     {
+                            
+                    //     }
+                    // }
                 }
                 sr.Close();
             }
@@ -39,35 +70,45 @@ namespace MovieLibrary.Data
             string movieId = "";
             int id = 0;
             string answer;
-            int counter = 0;
             string title = "";
-            
             List<string> genres = new List<string>();
-            List<string> titles = new List<string>();
+            var list = new List<string>();
             StreamReader sr = new StreamReader(file);
 
-
-            
+            System.Console.WriteLine("What is the name of the movie?");
+            title = Console.ReadLine();
+            list.Add(title);
             while(!sr.EndOfStream){
-                
-                string line = sr.ReadLine();
-                string[] arr = line.Split(",");
-               
-                movieId = arr[0];
-        
-                if(movieId == "movieId"){
-                    id = 0;
-                } else{
-                    id = Int32.Parse(movieId);
-                    id++;
-                }
-                  
-                   
-            }
+                 
+                 string line = sr.ReadLine();
+                 string[] arr = line.Split(",");
+                 
+                 movieId = arr[0];
+                 list.Add(arr[1]);
 
-            
-            
-           
+                 if(movieId == "movieId"){
+                     id = 0;
+                 } else
+                 {
+                    try
+                    {
+                        id = Int32.Parse(movieId);
+                        System.Console.WriteLine(id);
+                    } catch (FormatException e)
+                    {
+                        System.Console.WriteLine(e.Message);
+                    }
+                 }
+
+                if(list.Count != list.Distinct().Count())
+                {
+                    System.Console.WriteLine("Duplicate Title! Please try again!");
+                    return;
+                }
+
+
+            }
+            id++;
             sr.Close();
             StreamWriter sw = new StreamWriter(file, true);
             
@@ -97,10 +138,12 @@ namespace MovieLibrary.Data
             } while (answer == "Y");
             string genre = String.Join("|", genres);
             System.Console.WriteLine(id);
-            sw.WriteLine("{0},{1},{2}" id,title,genre);
+            sw.WriteLine("{0},{1},{2}", id,title,genre);
 
             
             sw.Close();
+
+
         }
         //   Struggling with finding a way to check for duplicates
         // public void duplicateTitle(string title){

@@ -23,7 +23,7 @@ namespace MovieLibrary {
         }
 
         public string MenuSelection(){
-            System.Console.WriteLine("Select the following options");
+            System.Console.WriteLine("\n\nSelect the following options");
             System.Console.WriteLine("1) List of our movies");
             System.Console.WriteLine("2) Add a movie to our list");
             System.Console.WriteLine("Any other key will leave the system");
