@@ -17,7 +17,7 @@ namespace MovieLibrary {
 
         //Though having the menu display from the constructor was cool so trying it out.
         private void DisplayMenu(){
-            System.Console.WriteLine("Hello! Welcome to the Magnificent Movie Library");
+            System.Console.WriteLine("\n\nHello! Welcome to the Magnificent Movie Library");
             System.Console.WriteLine("Please select the options below");
             
         }

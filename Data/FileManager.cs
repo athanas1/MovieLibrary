@@ -16,12 +16,12 @@ namespace MovieLibrary.Data
             if(File.Exists(file)){
                 int counter = 0;
                 string answer = "";
-                int x = 0;
+                
                 //Reading data from file
                 StreamReader sr = new StreamReader(file);
                 while(!sr.EndOfStream)
                 {
-                    bool valid = true;
+                    
                     string line = sr.ReadLine();
                     //converting each string to an array with split with a ,
                     string[] arr = line.Split(',');
