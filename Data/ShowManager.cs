@@ -40,22 +40,6 @@ namespace MovieLibrary.Data
                             break;
                         }
                     }
-                        
-                    // if(valid)
-                    // {
-                    //     int x = 0;
-                        
-                    //     System.Console.WriteLine("List next page?  (Y/N)");
-                    //     answer = Console.ReadLine().ToUpper();
-                    //     if(answer == "Y"){
-                    //         valid = true;
-                    //     } else{
-                    //         valid = false;
-                    //     }
-                    //     {
-                            
-                    //     }
-                    // }
                 }
                 sr.Close();
             }
@@ -80,15 +64,15 @@ namespace MovieLibrary.Data
 
             System.Console.WriteLine("What is the name of the show?");
             title = Console.ReadLine();
-            //adds writers to a list to check if there are duplicates
-            list.Add(title);
+            
+            //list.Add(title);
             while(!sr.EndOfStream){
                  
                  string line = sr.ReadLine();
                  string[] arr = line.Split(",");
                  
                  showId = arr[0];
-                 list.Add(arr[1]);
+                 //list.Add(arr[1]);
 
                  if(showId == "showId"){
                      id = 0;
@@ -104,11 +88,11 @@ namespace MovieLibrary.Data
                     }
                  }
 
-                if(list.Count != list.Distinct().Count())
-                {
-                    System.Console.WriteLine("Duplicate Title! Please try again!");
-                    return;
-                }
+                // if(list.Count != list.Distinct().Count())
+                // {
+                //     System.Console.WriteLine("Duplicate Title! Please try again!");
+                //     return;
+                // }
 
 
             }

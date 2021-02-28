@@ -35,7 +35,7 @@ namespace MovieLibrary.Models
     {
         public string format { get; set; }
         public int length { get; set; }
-        public int region { get; set; }
+        public string region { get; set; }
         
         public override string Display(){
             return (id + "," + title + "," + format + "," + length + "," + region); 

@@ -10,6 +10,7 @@ namespace MovieLibrary {
         
         private MovieManager manager;
         private ShowManager showManager;
+        private VideoManager videoManager;
         
         
 
@@ -64,6 +65,14 @@ namespace MovieLibrary {
                     showManager = new ShowManager();
                     System.Console.WriteLine();
                     showManager.listShows();
+                } else if(answer == "3")
+                {
+                    videoManager = new VideoManager();
+                    System.Console.WriteLine();
+                    videoManager.listVideos();
+                } else
+                {
+                    System.Console.WriteLine("Please select a correct response!");
                 }
             } else if(userResponse == "2"){
                 System.Console.WriteLine("\n\nWhich media type would you like to add? \n1)Movies\n2)Shows\n3)Videos");
@@ -77,6 +86,14 @@ namespace MovieLibrary {
                     showManager = new ShowManager();
                     System.Console.WriteLine();
                     showManager.addShow();
+                } else if(answer2 == "3")
+                {
+                    videoManager = new VideoManager();
+                    System.Console.WriteLine();
+                    videoManager.addVideo();
+                } else
+                {
+                    System.Console.WriteLine("Please select a correct response!");
                 }
                 
             }
