@@ -24,10 +24,10 @@ namespace MovieLibrary.Models
     {
         public int season { get; set; }
         public int episode { get; set; }
-        public string writers { get; set; }
+        public string writer { get; set; }
 
         public override string Display(){
-           return (id + "," + title + "," + season + "," + episode + "," + writers);
+           return (id + "," + title + "," + season + "," + episode + "," + writer);
         }
     }
 
@@ -35,10 +35,10 @@ namespace MovieLibrary.Models
     {
         public string format { get; set; }
         public int length { get; set; }
-        public int regions { get; set; }
+        public int region { get; set; }
         
         public override string Display(){
-            return (id + "," + title + "," + format + "," + length + "," + regions); 
+            return (id + "," + title + "," + format + "," + length + "," + region); 
         }
     }
 }

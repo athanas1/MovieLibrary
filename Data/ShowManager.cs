@@ -6,14 +6,14 @@ using System.Linq;
 using CsvHelper;
 using MovieLibrary.Models;
 
-
 namespace MovieLibrary.Data
 {
-    internal class MovieManager
-    {
-        private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "movies.csv");
 
-        public void listMovies(){
+    internal class ShowManager
+    {
+        private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "shows.csv");
+
+        public void listShows(){
             if(File.Exists(file)){
                 int counter = 0;
                 string answer = "";
@@ -66,18 +66,19 @@ namespace MovieLibrary.Data
 
         }
 
-        public void addMovie()
-        {
-            string movieId = "";
-            int id = 0;
+        public void addShow(){
+            string showId = "";
+            int id  = 0;
             string answer;
             string title = "";
-            List<string> genres = new List<string>();
+            List<string> writers = new List<string>();
             var list = new List<string>();
             StreamReader sr = new StreamReader(file);
-            var movie = new Movie();
+            var show = new Show();
+            // int season;
+            // int episodes;
 
-            System.Console.WriteLine("What is the name of the movie?");
+            System.Console.WriteLine("What is the name of the show?");
             title = Console.ReadLine();
             //adds writers to a list to check if there are duplicates
             list.Add(title);
@@ -86,16 +87,16 @@ namespace MovieLibrary.Data
                  string line = sr.ReadLine();
                  string[] arr = line.Split(",");
                  
-                 movieId = arr[0];
+                 showId = arr[0];
                  list.Add(arr[1]);
 
-                 if(movieId == "movieId"){
+                 if(showId == "showId"){
                      id = 0;
                  } else
                  {
                     try
                     {
-                        id = Int32.Parse(movieId);
+                        id = Int32.Parse(showId);
                         
                     } catch (FormatException e)
                     {
@@ -112,62 +113,44 @@ namespace MovieLibrary.Data
 
             }
             id++;
-            movie.id = id;
-            movie.title = title;
+            show.id = id;
+            show.title = title;
             sr.Close();
+
+            System.Console.WriteLine("What season of the show do you want to add?");
+            try 
+            {
+                show.season = Int32.Parse(Console.ReadLine());
+            } catch (FormatException e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
+
+            System.Console.WriteLine("What episode of season " + show.season +  " do you want to add?");
+            try 
+            {
+                show.episode = Int32.Parse(Console.ReadLine());
+            } catch (FormatException e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
+            
             StreamWriter sw = new StreamWriter(file, true);
-            
-            
-            /////////////----Couldn't use this, was getting file already opened error
-            // while(!sr.EndOfStream){
-                
-            //     string line = sr.ReadLine();
-            //     string[] arr = line.Split(",");
-            //     title = arr[1];
-            //     do{
-            //         System.Console.WriteLine("Title of movie?");
-            //         title = Console.ReadLine();
-            //         if((titles.Count != titles.Distinct().Count())){
-            //             System.Console.WriteLine("That is a duplicate value. Please try again.");
-            //         }
-            //     }while((titles.Count != titles.Distinct().Count()));
-            // }
 
             do
             {
-                System.Console.WriteLine("Genre(s) of movie?");
+                System.Console.WriteLine("Writer(s) of the show?");
                 string output = Console.ReadLine();
-                genres.Add(output);
-                System.Console.WriteLine("Any other genres? (Y/N)");
+                writers.Add(output);
+                System.Console.WriteLine("Any other writers? (Y/N)");
                 answer = Console.ReadLine().ToUpper();
             } while (answer == "Y");
-            movie.genre = String.Join("|", genres);
-            System.Console.WriteLine(movie.Display());
-            sw.WriteLine(movie.Display());
-            //sw.WriteLine("{0},{1},{2}", id,title,genre);
+            show.writer = String.Join("|", writers);
+            System.Console.WriteLine(show.Display());
+            sw.WriteLine(show.Display());
 
-            
             sw.Close();
 
-
         }
-        //   Struggling with finding a way to check for duplicates
-        // public void duplicateTitle(string title){
-        //     List<string> titles = new List<string>();
-        //     StreamReader sr = new StreamReader(file);
-            
-        //     while(!sr.EndOfStream){
-                
-        //         string line = sr.ReadLine();
-        //         string[] arr = line.Split(",");
-               
-        //         titles = arr[1];
-
-        //         if(titles.Count != list.Distinct().Count())
-        //         {
-        //             title = console.ReadLine();
-        //         }
-        //     }
-        // }
     }
 }

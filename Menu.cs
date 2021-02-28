@@ -9,6 +9,8 @@ namespace MovieLibrary {
     internal class Menu {
         
         private MovieManager manager;
+        private ShowManager showManager;
+        
         
 
         public bool isValid { get; set; }
@@ -44,29 +46,60 @@ namespace MovieLibrary {
 
             return response;
         }
+        
 
         public void Choice(string userResponse){
             //Tried if
-           
-            switch (userResponse)
-            {
-                case "1":
-                    // List movies
+            string answer = "";
+            string answer2 = "";
+            if(userResponse == "1"){
+                System.Console.WriteLine("Which media type would you like a list of? \n1)Movies\n2)Shows\n3)Videos");
+                answer = Console.ReadLine();
+                if(answer == "1"){
                     manager = new MovieManager();
-                    System.Console.WriteLine();
+                    Console.WriteLine();
                     manager.listMovies();
-                    break;
-                case "2":
-                    // Ask user to enter movie details
+                } else if(answer == "2")
+                {
+                    showManager = new ShowManager();
+                    System.Console.WriteLine();
+                    showManager.listShows();
+                }
+            } else if(userResponse == "2"){
+                System.Console.WriteLine("\n\nWhich media type would you like to add? \n1)Movies\n2)Shows\n3)Videos");
+                answer2 = Console.ReadLine();
+                if(answer2 == "1"){
                     manager = new MovieManager();
                     Console.WriteLine();
                     manager.addMovie();
-                    break;
-                default:
-                    //default will close app
-                    System.Console.WriteLine("Thank you for using Magnificent Movie Service");  
-                    break;  
+                } else if(answer2 == "2")
+                {
+                    showManager = new ShowManager();
+                    System.Console.WriteLine();
+                    showManager.addShow();
+                }
+                
             }
+
+            // switch (userResponse)
+            // {
+            //     case "1":
+            //         // List movies
+            //         manager = new MovieManager();
+            //         System.Console.WriteLine();
+            //         manager.listMovies();
+            //         break;
+            //     case "2":
+            //         // Ask user to enter movie details
+            //         manager = new MovieManager();
+            //         Console.WriteLine();
+            //         manager.addMovie();
+            //         break;
+            //     default:
+            //         //default will close app
+            //         System.Console.WriteLine("Thank you for using Magnificent Movie Service");  
+            //         break;  
+            // }
 
             /////////     tried putting the isvalid in choice, too many issues with this
             // if (selection == "1"){
