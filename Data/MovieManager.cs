@@ -4,11 +4,12 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using CsvHelper;
+using MovieLibrary.Models;
 
 
 namespace MovieLibrary.Data
 {
-    internal class FileManager
+    internal class MovieManager
     {
         private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "movies.csv");
 
@@ -74,6 +75,7 @@ namespace MovieLibrary.Data
             List<string> genres = new List<string>();
             var list = new List<string>();
             StreamReader sr = new StreamReader(file);
+            var movie = new Movie();
 
             System.Console.WriteLine("What is the name of the movie?");
             title = Console.ReadLine();
@@ -93,7 +95,7 @@ namespace MovieLibrary.Data
                     try
                     {
                         id = Int32.Parse(movieId);
-                        System.Console.WriteLine(id);
+                        
                     } catch (FormatException e)
                     {
                         System.Console.WriteLine(e.Message);
@@ -109,6 +111,8 @@ namespace MovieLibrary.Data
 
             }
             id++;
+            movie.id = id;
+            movie.title = title;
             sr.Close();
             StreamWriter sw = new StreamWriter(file, true);
             
@@ -136,9 +140,10 @@ namespace MovieLibrary.Data
                 System.Console.WriteLine("Any other genres? (Y/N)");
                 answer = Console.ReadLine().ToUpper();
             } while (answer == "Y");
-            string genre = String.Join("|", genres);
-            System.Console.WriteLine(id);
-            sw.WriteLine("{0},{1},{2}", id,title,genre);
+            movie.genre = String.Join("|", genres);
+            System.Console.WriteLine(movie.Display());
+            sw.WriteLine(movie.Display());
+            //sw.WriteLine("{0},{1},{2}", id,title,genre);
 
             
             sw.Close();
