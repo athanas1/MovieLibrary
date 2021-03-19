@@ -67,6 +67,7 @@ namespace MovieLibrary {
                     showManager.listShows();
                 } else if(answer == "3")
                 {
+                    System.Console.WriteLine("wow");
                     videoManager = new VideoManager();
                     System.Console.WriteLine();
                     videoManager.listVideos();
