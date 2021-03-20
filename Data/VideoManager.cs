@@ -8,7 +8,7 @@ using MovieLibrary.Models;
 
 namespace MovieLibrary.Data
 {
-    internal class VideoManager
+    internal class VideoManager : IManager
     {
         private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "video.csv");
 

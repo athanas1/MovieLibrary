@@ -9,7 +9,7 @@ using MovieLibrary.Models;
 namespace MovieLibrary.Data
 {
 
-    internal class ShowManager
+    internal class ShowManager : IManager
     {
         private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "shows.csv");
 
