@@ -6,16 +6,17 @@ using ConsoleTables;
 
 namespace MovieLibrary {
 
-    internal class Menu {
+    
+    internal class Menu : IMenu {
         
-        private MovieManager manager;
+        private IMovieManager _manager;
         private ShowManager showManager;
         private VideoManager videoManager;
         
-        
 
         public bool isValid { get; set; }
-        public Menu(){
+        public Menu(IMovieManager manager){
+            _manager = manager;
             DisplayMenu();
         }
 
@@ -57,20 +58,20 @@ namespace MovieLibrary {
                 System.Console.WriteLine("Which media type would you like a list of? \n1)Movies\n2)Shows\n3)Videos");
                 answer = Console.ReadLine();
                 if(answer == "1"){
-                    manager = new MovieManager();
+                    //manager = new MovieManager();
                     Console.WriteLine();
-                    manager.listMovies();
+                    _manager.listMedia();
                 } else if(answer == "2")
                 {
                     showManager = new ShowManager();
                     System.Console.WriteLine();
-                    showManager.listShows();
+                    showManager.listMedia();
                 } else if(answer == "3")
                 {
                     System.Console.WriteLine("wow");
                     videoManager = new VideoManager();
                     System.Console.WriteLine();
-                    videoManager.listVideos();
+                    videoManager.listMedia();
                 } else
                 {
                     System.Console.WriteLine("Please select a correct response!");
@@ -79,19 +80,19 @@ namespace MovieLibrary {
                 System.Console.WriteLine("\n\nWhich media type would you like to add? \n1)Movies\n2)Shows\n3)Videos");
                 answer2 = Console.ReadLine();
                 if(answer2 == "1"){
-                    manager = new MovieManager();
+                    //manager = new MovieManager();
                     Console.WriteLine();
-                    manager.addMovie();
+                    _manager.addMedia();
                 } else if(answer2 == "2")
                 {
                     showManager = new ShowManager();
                     System.Console.WriteLine();
-                    showManager.addShow();
+                    showManager.addMedia();
                 } else if(answer2 == "3")
                 {
                     videoManager = new VideoManager();
                     System.Console.WriteLine();
-                    videoManager.addVideo();
+                    videoManager.addMedia();
                 } else
                 {
                     System.Console.WriteLine("Please select a correct response!");

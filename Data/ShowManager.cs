@@ -13,7 +13,7 @@ namespace MovieLibrary.Data
     {
         private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "shows.csv");
 
-        public void listShows(){
+        public void listMedia(){
             if(File.Exists(file)){
                 int counter = 0;
                 string answer = "";
@@ -50,7 +50,7 @@ namespace MovieLibrary.Data
 
         }
 
-        public void addShow(){
+        public void addMedia(){
             string showId = "";
             int id  = 0;
             string answer;

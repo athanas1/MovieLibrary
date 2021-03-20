@@ -1,5 +1,7 @@
 ﻿using System;
 using NLog.Web;
+using MovieLibrary.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 
 
@@ -9,8 +11,12 @@ namespace MovieLibrary
     {
         static void Main(string[] args)
         {
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IMovieManager, JSONMovieManager>()
+                .AddSingleton<IMenu, Menu>()
+                .BuildServiceProvider();
             
-            var menu = new Menu();
+            var menu = serviceProvider.GetService<IMenu>();
             do
             {
                 var userSelection = menu.MenuSelection();  

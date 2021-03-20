@@ -1,9 +1,9 @@
 namespace MovieLibrary.Data
 {
 public interface IManager{
-    void listMovies();
+    void listMedia();
 
-    void addMovies();
+    void addMedia();
 }
 
 }
