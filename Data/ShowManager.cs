@@ -9,7 +9,7 @@ using MovieLibrary.Models;
 namespace MovieLibrary.Data
 {
 
-    internal class ShowManager : IManager
+    internal class ShowManager : IShowManager
     {
         private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "shows.csv");
 
@@ -136,5 +136,8 @@ namespace MovieLibrary.Data
             sw.Close();
 
         }
+        // searchMedia(string response){
+
+        // }
     }
 }

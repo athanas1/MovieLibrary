@@ -153,23 +153,8 @@ namespace MovieLibrary.Data
 
 
         }
-        //   Struggling with finding a way to check for duplicates
-        // public void duplicateTitle(string title){
-        //     List<string> titles = new List<string>();
-        //     StreamReader sr = new StreamReader(file);
-            
-        //     while(!sr.EndOfStream){
-                
-        //         string line = sr.ReadLine();
-        //         string[] arr = line.Split(",");
-               
-        //         titles = arr[1];
-
-        //         if(titles.Count != list.Distinct().Count())
-        //         {
-        //             title = console.ReadLine();
-        //         }
-        //     }
+        // searchMedia(string response){
+        //     System.Console.WriteLine("hello");
         // }
     }
 }

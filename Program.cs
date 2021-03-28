@@ -12,7 +12,9 @@ namespace MovieLibrary
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<IMovieManager, JSONMovieManager>()
+                .AddSingleton<IMovieManager, MovieManager>()
+                .AddSingleton<IShowManager, ShowManager>()
+                .AddSingleton<IVideoManager, VideoManager>()
                 .AddSingleton<IMenu, Menu>()
                 .BuildServiceProvider();
             

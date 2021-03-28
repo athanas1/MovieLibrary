@@ -9,14 +9,14 @@ namespace MovieLibrary {
     
     internal class Menu : IMenu {
         
-        private IMovieManager _manager;
-        private ShowManager showManager;
-        private VideoManager videoManager;
+        private IMovieManager _movieManager;
+        private IShowManager _showManager;
+        private IVideoManager _videoManager;
         
 
         public bool isValid { get; set; }
-        public Menu(IMovieManager manager){
-            _manager = manager;
+        public Menu(IMovieManager movieManager){
+            _movieManager = movieManager;
             DisplayMenu();
         }
 
@@ -31,6 +31,7 @@ namespace MovieLibrary {
             System.Console.WriteLine("\n\nSelect the following options");
             System.Console.WriteLine("1) List of our media");
             System.Console.WriteLine("2) Add a  media to our list");
+            System.Console.WriteLine("3) Search our media collections");
             System.Console.WriteLine("Any other key will leave the system");
             
             var response = Console.ReadLine();
@@ -41,7 +42,10 @@ namespace MovieLibrary {
             } else if (response == "2") {
                 isValid = true;
                 
-            } else{
+            } else if(response == "3"){
+                isValid = true;
+            }
+             else{
                 isValid = false;
                 
             }
@@ -54,13 +58,14 @@ namespace MovieLibrary {
             //Tried if
             string answer = "";
             string answer2 = "";
+            string answer3 = "";
             if(userResponse == "1"){
                 System.Console.WriteLine("Which media type would you like a list of? \n1)Movies\n2)Shows\n3)Videos");
                 answer = Console.ReadLine();
                 if(answer == "1"){
                     //manager = new MovieManager();
                     Console.WriteLine();
-                    _manager.listMedia();
+                    _movieManager.listMedia();
                 } else if(answer == "2")
                 {
                     showManager = new ShowManager();
@@ -82,7 +87,7 @@ namespace MovieLibrary {
                 if(answer2 == "1"){
                     //manager = new MovieManager();
                     Console.WriteLine();
-                    _manager.addMedia();
+                    _movieManager.addMedia();
                 } else if(answer2 == "2")
                 {
                     showManager = new ShowManager();
@@ -96,8 +101,14 @@ namespace MovieLibrary {
                 } else
                 {
                     System.Console.WriteLine("Please select a correct response!");
-                }
-                
+                } 
+            } else if(userResponse == "3"){
+                System.Console.WriteLine("\n\n Search based on \n1)Title\n2)Genre?");
+                answer3 = Console.ReadLine();
+                // if(answer3 == "1"){
+                //     System.Console.WriteLine("What Title to search by?");
+                //     var response = Console.ReadLine();
+                // }
             }
 
             // switch (userResponse)

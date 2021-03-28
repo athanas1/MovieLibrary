@@ -90,10 +90,14 @@ namespace MovieLibrary.Data
                  string line = sr.ReadLine();
                  string[] arr = line.Split(",");
                  
-                 movieId = arr[0];
-                 list.Add(arr[1]);
+                 
 
-                 if(movieId == "movieId"){
+                 Movie m = JsonConvert.DeserializeObject<Movie>(line);
+                 
+                 System.Console.WriteLine(id);
+                 //list.Add(arr[1]);
+
+                 if(movieId == "id"){
                      id = 0;
                  } else
                  {
@@ -107,11 +111,11 @@ namespace MovieLibrary.Data
                     }
                  }
 
-                if(list.Count != list.Distinct().Count())
-                {
-                    System.Console.WriteLine("Duplicate Title! Please try again!");
-                    return;
-                }
+                // if(list.Count != list.Distinct().Count())
+                // {
+                //     System.Console.WriteLine("Duplicate Title! Please try again!");
+                //     return;
+                // }
 
 
             }
@@ -133,7 +137,8 @@ namespace MovieLibrary.Data
                 answer = Console.ReadLine().ToUpper();
             } while (answer == "Y");
             movie.genre = String.Join("|", genres);
-            System.Console.WriteLine(movie.Display());
+            
+            //System.Console.WriteLine(movie.Display());
             string json = JsonConvert.SerializeObject(movie);
             System.Console.WriteLine(json);
             //sw.WriteLine("{0},{1},{2}", id,title,genre);

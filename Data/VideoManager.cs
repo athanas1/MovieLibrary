@@ -8,7 +8,7 @@ using MovieLibrary.Models;
 
 namespace MovieLibrary.Data
 {
-    internal class VideoManager : IManager
+    internal class VideoManager : IVideoManager
     {
         private readonly string file = Path.Combine(Environment.CurrentDirectory, "Files", "video.csv");
 
@@ -131,5 +131,8 @@ namespace MovieLibrary.Data
             sw.Close();
             
         }
+        // searchMedia(string response){
+
+        // }
     }
 }
