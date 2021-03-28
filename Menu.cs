@@ -15,8 +15,10 @@ namespace MovieLibrary {
         
 
         public bool isValid { get; set; }
-        public Menu(IMovieManager movieManager){
+        public Menu(IMovieManager movieManager, IShowManager showManager, IVideoManager videoManager){
             _movieManager = movieManager;
+            _showManager = showManager;
+            _videoManager = videoManager;
             DisplayMenu();
         }
 
@@ -68,15 +70,15 @@ namespace MovieLibrary {
                     _movieManager.listMedia();
                 } else if(answer == "2")
                 {
-                    showManager = new ShowManager();
+                    //showManager = new ShowManager();
                     System.Console.WriteLine();
-                    showManager.listMedia();
+                    _showManager.listMedia();
                 } else if(answer == "3")
                 {
                     System.Console.WriteLine("wow");
-                    videoManager = new VideoManager();
+                    //videoManager = new VideoManager();
                     System.Console.WriteLine();
-                    videoManager.listMedia();
+                    _videoManager.listMedia();
                 } else
                 {
                     System.Console.WriteLine("Please select a correct response!");
@@ -90,27 +92,35 @@ namespace MovieLibrary {
                     _movieManager.addMedia();
                 } else if(answer2 == "2")
                 {
-                    showManager = new ShowManager();
+                   // showManager = new ShowManager();
                     System.Console.WriteLine();
-                    showManager.addMedia();
+                    _showManager.addMedia();
                 } else if(answer2 == "3")
                 {
-                    videoManager = new VideoManager();
+                    //videoManager = new VideoManager();
                     System.Console.WriteLine();
-                    videoManager.addMedia();
+                    _videoManager.addMedia();
                 } else
                 {
                     System.Console.WriteLine("Please select a correct response!");
                 } 
             } else if(userResponse == "3"){
-                System.Console.WriteLine("\n\n Search based on \n1)Title\n2)Genre?");
+                System.Console.WriteLine("\n\n Search based on the following options \n1)Title\n2)Genre");
                 answer3 = Console.ReadLine();
-                // if(answer3 == "1"){
-                //     System.Console.WriteLine("What Title to search by?");
-                //     var response = Console.ReadLine();
-                // }
+                if(answer3 == "1"){
+                    System.Console.WriteLine("What Title to search by?");
+                    var response = Console.ReadLine();
+                    _movieManager.searchTitle(response);
+                    _showManager.searchTitle(response);
+                    _videoManager.searchTitle(response);
+                }else if(answer3 == "2"){
+                    System.Console.WriteLine("What Genre do you want to search by?");
+                    var response = Console.ReadLine();
+                    _movieManager.searchGenre(response);
+                    _showManager.searchGenre(response);
+                    _videoManager.searchGenre(response);
+                }
             }
-
             // switch (userResponse)
             // {
             //     case "1":

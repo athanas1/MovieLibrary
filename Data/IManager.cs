@@ -5,7 +5,9 @@ public interface IManager{
 
     void addMedia();
 
-    //void searchMedia(string response);
+    void searchTitle(string response);
+    
+    void searchGenre(string response);
 }
 
 }

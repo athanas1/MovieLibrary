@@ -148,6 +148,11 @@ namespace MovieLibrary.Data
 
 
         }
-       
+        public void searchTitle(string response){
+            System.Console.WriteLine(response);
+        }
+       public void searchGenre(string response){
+            System.Console.WriteLine(response);
+        }
     }
 }

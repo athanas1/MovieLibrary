@@ -56,6 +56,7 @@ namespace MovieLibrary.Data
             string answer;
             string title = "";
             List<string> writers = new List<string>();
+            List<string> genres = new List<string>();
             var list = new List<string>();
             StreamReader sr = new StreamReader(file);
             var show = new Show();
@@ -130,14 +131,75 @@ namespace MovieLibrary.Data
                 answer = Console.ReadLine().ToUpper();
             } while (answer == "Y");
             show.writer = String.Join("|", writers);
-            System.Console.WriteLine(show.Display());
+
+            do
+            {
+                System.Console.WriteLine("Genre(s) of Show?");
+                string output = Console.ReadLine();
+                genres.Add(output);
+                System.Console.WriteLine("Any other genres? (Y/N)");
+                answer = Console.ReadLine().ToUpper();
+            } while (answer == "Y");
+            show.genre = String.Join("|", genres);
             sw.WriteLine(show.Display());
 
             sw.Close();
 
         }
-        // searchMedia(string response){
+        public void searchTitle(string response){
+            int counter = 0;
+            List<string> searchList = new List<string>();
+            List<string> completeList = new List<string>();
+            StreamReader sr = new StreamReader(file);
+            while(!sr.EndOfStream){
+                
+                string line = sr.ReadLine();
+                string[] arr = line.Split(",");
 
-        // }
+                searchList.Add(arr[1]);
+                
+                
+                var foundSearch = searchList.Where(search => search.Contains(response));
+                completeList = foundSearch.Distinct().ToList();
+                //completeList.foundSearch.Distinct().ToList();
+                counter = foundSearch.Count();
+                
+            }
+            sr.Close();
+            System.Console.WriteLine("\nNumber of search(s) found based off " + response +" was "+ counter + " in Shows");
+            System.Console.WriteLine("\n");
+            foreach(string search in completeList)
+            {
+                System.Console.WriteLine(search);
+            }
+        }
+
+        public void searchGenre(string response){
+            int counter = 0;
+            List<string> searchList = new List<string>();
+            List<string> completeList = new List<string>();
+            StreamReader sr = new StreamReader(file);
+            while(!sr.EndOfStream){
+                
+                string line = sr.ReadLine();
+                string[] arr = line.Split(",");
+
+                searchList.Add(arr[2]);
+                
+                
+                var foundSearch = searchList.Where(search => search.Contains(response));
+                completeList = foundSearch.Distinct().ToList();
+                //completeList.foundSearch.Distinct().ToList();
+                counter = foundSearch.Count();
+                
+            }
+            sr.Close();
+            System.Console.WriteLine("\nNumber of search(s) found based off " + response +" was "+ counter + " in Movies");
+            System.Console.WriteLine("\n");
+            foreach(string search in completeList)
+            {
+                System.Console.WriteLine(search);
+            }
+        }
     }
 }

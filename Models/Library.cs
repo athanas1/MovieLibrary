@@ -5,6 +5,8 @@ namespace MovieLibrary.Models
         public int id { get; set; }
 
         public string title { get; set; }
+        
+        public string genre { get; set; }
 
         public abstract string Display();
 
@@ -12,7 +14,7 @@ namespace MovieLibrary.Models
 
     public class Movie : Library
     {
-        public string genre { get; set; }
+        
         
         public override string Display(){
             return (id + "," + title + "," + genre);
@@ -27,7 +29,7 @@ namespace MovieLibrary.Models
         public string writer { get; set; }
 
         public override string Display(){
-           return (id + "," + title + "," + season + "," + episode + "," + writer);
+           return (id + "," + title + "," + genre + "," + season + "," + episode + "," + writer);
         }
     }
 
@@ -38,7 +40,7 @@ namespace MovieLibrary.Models
         public string region { get; set; }
         
         public override string Display(){
-            return (id + "," + title + "," + format + "," + length + "," + region); 
+            return (id + "," + title + "," + genre + "," + format + "," + length + "," + region); 
         }
     }
 }
