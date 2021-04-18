@@ -12,10 +12,11 @@ namespace MovieLibrary
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
+                .AddSingleton<IDatabaseMovieManager, DatabaseMovieManager>()
                 .AddSingleton<IMovieManager, MovieManager>()
                 .AddSingleton<IShowManager, ShowManager>()
                 .AddSingleton<IVideoManager, VideoManager>()
-                .AddSingleton<IMenu, Menu>()
+                .AddSingleton<IMenu, DatabaseMenu>()
                 .BuildServiceProvider();
             
             var menu = serviceProvider.GetService<IMenu>();

@@ -12,13 +12,16 @@ namespace MovieLibrary {
         private IMovieManager _movieManager;
         private IShowManager _showManager;
         private IVideoManager _videoManager;
+        private IDatabaseMovieManager _databaseMovieManager;
+
         
 
         public bool isValid { get; set; }
-        public Menu(IMovieManager movieManager, IShowManager showManager, IVideoManager videoManager){
+        public Menu(IMovieManager movieManager, IShowManager showManager, IVideoManager videoManager,IDatabaseMovieManager databaseMovieManager){
             _movieManager = movieManager;
             _showManager = showManager;
             _videoManager = videoManager;
+            _databaseMovieManager = databaseMovieManager;
             DisplayMenu();
         }
 
@@ -32,7 +35,7 @@ namespace MovieLibrary {
         public string MenuSelection(){
             System.Console.WriteLine("\n\nSelect the following options");
             System.Console.WriteLine("1) List of our media");
-            System.Console.WriteLine("2) Add a  media to our list");
+            System.Console.WriteLine("2) Add a media to our list");
             System.Console.WriteLine("3) Search our media collections");
             System.Console.WriteLine("Any other key will leave the system");
             
@@ -75,7 +78,7 @@ namespace MovieLibrary {
                     _showManager.listMedia();
                 } else if(answer == "3")
                 {
-                    System.Console.WriteLine("wow");
+                    
                     //videoManager = new VideoManager();
                     System.Console.WriteLine();
                     _videoManager.listMedia();
