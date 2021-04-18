@@ -14,7 +14,10 @@ namespace MovieLibrary.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MovieDb;");
+                IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+            optionsBuilder.UseSqlServer(@config["MovieContext:ConnectionString"]);
         }
     }
 }
