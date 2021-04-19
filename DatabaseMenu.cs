@@ -53,17 +53,18 @@ private void DisplayMenu(){
 
         public void Choice(string userResponse){
             if(userResponse == "1"){
-                System.Console.WriteLine("What Movie would you like to search for?");
+                System.Console.WriteLine("What Movie would you like to search for?(NO NUMBERS PLEASE GOD)");
+                var response = Console.ReadLine();
+                _databaseMovieManager.searchTitle(response);
                 
             } else if (userResponse == "2"){
-                System.Console.WriteLine("What Movie would you like to add?");
+                _databaseMovieManager.addMedia();
 
             } else if(userResponse == "3"){
-                System.Console.WriteLine("What is the Movie ID you would like to update?");
+                _databaseMovieManager.updateMovie();
 
             } else if(userResponse == "4"){
-                System.Console.WriteLine("What is the Movie ID you would like to Delete?");
-
+                _databaseMovieManager.deleteMovie();
             }
         }
      }

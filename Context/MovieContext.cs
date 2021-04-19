@@ -13,12 +13,12 @@ namespace MovieLibrary.Context
         public DbSet<User> Users {get;set;}
         public DbSet<UserMovie> UserMovies {get;set;}
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-                IConfiguration config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", true, true)
-                .Build();
-            optionsBuilder.UseSqlServer(@config["MovieContext:ConnectionString"]);
-        }
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {   
+                // IConfiguration config = new ConfigurationBuilder()
+                //     .AddJsonFile("appsettings.json", true, true)
+                //     .Build();
+                optionsBuilder.UseSqlServer();
+            }
     }
 }
