@@ -287,7 +287,29 @@ namespace MovieLibrary.Data{
     
     
         public void listMedia(){
-            
+            string response = "";
+            int y = 0;
+            string userSelection = "";
+            using(var db = new MovieContext()){
+                System.Console.WriteLine("Would you like to see all Entries or just a List of 10 per page?  1) All ||| 2)10 Per Page)");
+                userSelection = Console.ReadLine();
+                if(userSelection == "1"){
+                    var movies = db.Movies.ToList();
+                    foreach(var m in movies) {
+                        System.Console.WriteLine($"({m.Id}) {m.Title} {m.ReleaseDate}");
+                    }
+                } else if(userSelection == "2"){
+                    do{
+                    var movies = db.Movies.Skip(y).Take(10);
+                    foreach(var m in movies){
+                        System.Console.WriteLine($"({m.Id}) {m.Title}  {m.ReleaseDate}");
+                    } 
+                    System.Console.WriteLine("Go to next page? (Y/N) \n");
+                    response = Console.ReadLine().ToUpper();
+                    y += 10;
+                    } while(response != "N");
+                }
+            } 
         }        
         public void searchGenre(string response){
            

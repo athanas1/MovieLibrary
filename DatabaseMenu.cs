@@ -28,6 +28,7 @@ private void DisplayMenu(){
         System.Console.WriteLine("4) Delete a Movie");
         System.Console.WriteLine("5) Add a User to the System");
         System.Console.WriteLine("6) Rate a Movie");
+        System.Console.WriteLine("7) List all of our Media");
         System.Console.WriteLine("Any other key will leave the system");
         
         var response = Console.ReadLine();
@@ -49,6 +50,9 @@ private void DisplayMenu(){
             isValid = true;
             
         }else if(response == "6"){
+            isValid = true;
+            
+        }else if(response == "7"){
             isValid = true;
             
         }else{
@@ -78,6 +82,8 @@ private void DisplayMenu(){
                 _databaseMovieManager.addUser();
             } else if (userResponse == "6"){
                 _databaseMovieManager.userRatedMovie();
+            } else if (userResponse == "7"){
+                _databaseMovieManager.listMedia();
             }
         }
      }
