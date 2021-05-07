@@ -38,19 +38,15 @@ namespace MovieLibrary.Data{
                foreach(var movie in movies){
                    if(movie.Title.Contains(response)){
                        System.Console.WriteLine($"({movie.Id}) {movie.Title} {movie.ReleaseDate}");
-                   } else{
-                       System.Console.WriteLine("\nSorry, No movies were found with that keyword");
-                       break;
-                   }
+                   } 
                }
-               
-                
             }
         }
 
         public void updateMovie(){
             int id;
             string title = "";
+            DateTime time = DateTime.Now;
             System.Console.WriteLine("What is the ID of the Movie you want to update?");
             try
             {
@@ -75,7 +71,8 @@ namespace MovieLibrary.Data{
 
                 var movie = new Movie(){
                     Id = id,
-                    Title = title
+                    Title = title,
+                    ReleaseDate = time
                 };
 
                 db.Movies.Update(movie);
