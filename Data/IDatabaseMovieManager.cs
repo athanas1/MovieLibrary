@@ -6,7 +6,9 @@ namespace MovieLibrary.Data
 
         void deleteMovie();
 
+        void addUser();
 
+        void userRatedMovie();
     }
 
 }

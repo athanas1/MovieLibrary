@@ -26,6 +26,8 @@ private void DisplayMenu(){
         System.Console.WriteLine("2) Add a Movie to our list");
         System.Console.WriteLine("3) Update a Movie");
         System.Console.WriteLine("4) Delete a Movie");
+        System.Console.WriteLine("5) Add a User to the System");
+        System.Console.WriteLine("6) Rate a Movie");
         System.Console.WriteLine("Any other key will leave the system");
         
         var response = Console.ReadLine();
@@ -41,6 +43,12 @@ private void DisplayMenu(){
             
         }
         else if(response == "4"){
+            isValid = true;
+            
+        }else if(response == "5"){
+            isValid = true;
+            
+        }else if(response == "6"){
             isValid = true;
             
         }else{
@@ -65,6 +73,11 @@ private void DisplayMenu(){
 
             } else if(userResponse == "4"){
                 _databaseMovieManager.deleteMovie();
+
+            } else if (userResponse == "5"){
+                _databaseMovieManager.addUser();
+            } else if (userResponse == "6"){
+                _databaseMovieManager.userRatedMovie();
             }
         }
      }

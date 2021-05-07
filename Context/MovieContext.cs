@@ -15,7 +15,7 @@ namespace MovieLibrary.Context
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {   
-                // IConfiguration config = new ConfigurationBuilder()
+                //  IConfiguration config = new ConfigurationBuilder()
                 //     .AddJsonFile("appsettings.json", true, true)
                 //     .Build();
                 optionsBuilder.UseSqlServer();

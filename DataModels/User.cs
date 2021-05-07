@@ -10,6 +10,7 @@ namespace MovieLibrary.DataModels
         public string Gender { get; set; }
         public string ZipCode { get; set; }
 
+        
         public virtual Occupation Occupation { get; set; }
         public virtual ICollection<UserMovie> UserMovies {get;set;}
     }
