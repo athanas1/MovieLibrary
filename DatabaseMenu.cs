@@ -23,12 +23,13 @@ private void DisplayMenu(){
         public string MenuSelection(){
         System.Console.WriteLine("\n\nSelect the following options");
         System.Console.WriteLine("1) Search our movies");
-        System.Console.WriteLine("2) Add a Movie to our list");
-        System.Console.WriteLine("3) Update a Movie");
-        System.Console.WriteLine("4) Delete a Movie");
-        System.Console.WriteLine("5) Add a User to the System");
-        System.Console.WriteLine("6) Rate a Movie");
-        System.Console.WriteLine("7) List all of our Media");
+        System.Console.WriteLine("2) List all of our Media");
+        System.Console.WriteLine("3) Add a Movie to our list");
+        System.Console.WriteLine("4) Update a Movie");
+        System.Console.WriteLine("5) Delete a Movie");
+        System.Console.WriteLine("6) Add a User to the System");
+        System.Console.WriteLine("7) Rate a Movie");
+        
         System.Console.WriteLine("Any other key will leave the system");
         
         var response = Console.ReadLine();
@@ -70,21 +71,21 @@ private void DisplayMenu(){
                 _databaseMovieManager.searchTitle(response);
                 
             } else if (userResponse == "2"){
+                _databaseMovieManager.listMedia();
+            }else if (userResponse == "3"){
                 _databaseMovieManager.addMedia();
 
-            } else if(userResponse == "3"){
+            } else if(userResponse == "4"){
                 _databaseMovieManager.updateMovie();
 
-            } else if(userResponse == "4"){
+            } else if(userResponse == "5"){
                 _databaseMovieManager.deleteMovie();
 
-            } else if (userResponse == "5"){
-                _databaseMovieManager.addUser();
             } else if (userResponse == "6"){
-                _databaseMovieManager.userRatedMovie();
+                _databaseMovieManager.addUser();
             } else if (userResponse == "7"){
-                _databaseMovieManager.listMedia();
-            }
+                _databaseMovieManager.userRatedMovie();
+            } 
         }
      }
 }
